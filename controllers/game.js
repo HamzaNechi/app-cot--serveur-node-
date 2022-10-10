@@ -3,13 +3,6 @@ import Game from '../models/game.js';
 export function getAll(req, res) {
     Game
     .find({})
-    // .where('onSale').equals(true) // Si 'OnSale' a la valeur true
-    // .where('year').gt(2000).lt(2022) // Si 2000 < 'year' < 2022 
-    // .where('name').in(['DMC5', 'RE8', 'NFS']) // Si 'name' a l'une des valeurs du tableau
-    // .limit(10) // Récupérer les 10 premiers seulement
-    // .sort('-year') // Tri descendant (enlever le '-' pour un tri ascendant)
-    // .select('name') // Ne retourner que les attributs mentionnés (séparés par des espace si plusieurs)
-    // .exec() // Executer la requête
     .then(docs => {
         res.status(200).json(docs);
     })
@@ -83,17 +76,3 @@ export function deleteOnce(req, res) {
         res.status(500).json({ error: err });
     });
 }
-
-// /**
-//  * Supprimer plusieurs documents
-//  */
-// export function deleteOnce(req, res) {
-//     Game
-//     .remove({ "onSale": false })
-//     .then(doc => {
-//         res.status(200).json(doc);
-//     })
-//     .catch(err => {
-//         res.status(500).json({ error: err });
-//     });
-// }
